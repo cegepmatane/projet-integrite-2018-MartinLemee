@@ -2,6 +2,7 @@ package vue;
 import java.util.ArrayList;
 import java.util.List;
 
+import controleur.ControleurAnime;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import modele.Anime;
@@ -16,25 +17,50 @@ public class NavigateurDesVues extends Application{
 	{
 		this.vueAjouterAnime = new VueAjouterAnime();
 		this.vueListeAnime = new VueListeAnime();
-		this.vueAnime = new VueAnime();
-		
-		/// TEST ///
-		List listeAnimeTest = new ArrayList<Anime>();
-		listeAnimeTest.add(new Anime("Made in Abyss", "Kinema Citrus", "13", "Ete 2017"));
-		listeAnimeTest.add(new Anime("A Silent Voice", "Kyoto Animation", "1", "Automne 2016"));
-		listeAnimeTest.add(new Anime("Your Name", "CoMix Wave Films", "1", "Ete 2016"));
-		listeAnimeTest.add(new Anime("Hyouka", "Kyoto Animation", "22", "Printemps 2012"));
-		this.vueListeAnime.afficherListeAnime(listeAnimeTest); // Appel de ma fonction avant de la programmer (pour tester à mesure)
-		
-		//// TEST ////
-		Anime anime = new Anime("Made in Abyss", "Kinema Citrus", "13", "Ete 2017");
-		this.vueAnime.afficherAnime(anime); // Appel de ma fonction avant de la programmer (pour tester à mesure)		
+		this.vueAnime = new VueAnime();	
 	}
+	
+	private Stage stade = null;
 	
 	@Override
 	public void start(Stage stade) throws Exception {
+		
+		this.stade = stade;
+		
+		stade.setScene(this.vueAnime);
+		stade.show();
+		
+		ControleurAnime controleur = ControleurAnime.getInstance();
+		controleur.activerVues(this);
+		
+	}
+	
+	public VueAjouterAnime getVueAjouterAnime() {
+		return vueAjouterAnime;
+	}
+
+	public void naviguerVersVueAjouterAnime( ){
+		stade.setScene(this.vueAjouterAnime);
+		stade.show();
+	}
+
+	public VueListeAnime getVueListeAnime() {
+		return vueListeAnime;
+	}
+
+	public void naviguerVersVueListeAnime() {
+		stade.setScene(this.vueListeAnime);
+		stade.show();
+	}
+
+	public VueAnime getVueAnime() {
+		return vueAnime;
+	}
+
+	public void naviguerVersVueAnime() {
 		stade.setScene(this.vueAnime);
 		stade.show();
 	}
+	
 	
 }
