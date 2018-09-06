@@ -24,7 +24,7 @@ public class NavigateurDesVues extends Application{
 		
 		this.stade = stade;
 		
-		stade.setScene(this.vueAnime);
+		stade.setScene(this.vueListeAnime);
 		stade.show();
 		
 		ControleurAnime controleur = ControleurAnime.getInstance();

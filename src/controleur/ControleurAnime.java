@@ -17,20 +17,13 @@ public class ControleurAnime {
 	private VueListeAnime vueListeAnime = null;
 	private VueAjouterAnime vueAjouterAnime = null;
 	
-	private NavigateurDesVues navigateur = null;
+	private NavigateurDesVues navigateur;
+	AnimeDAO animeDAO = null;
+	
 	public ControleurAnime() 
 	{
-		
-	}
-	
-	private static ControleurAnime instance = null; // null est important
-	public static ControleurAnime getInstance()
-	{
-		if(null == instance)
-		{
-			instance = new ControleurAnime();
-		}
-		return instance;
+		System.out.println("Initialisation du controleur");	
+		this.animeDAO = new AnimeDAO();
 	}
 	
 	public void activerVues(NavigateurDesVues navigateur)
@@ -43,7 +36,6 @@ public class ControleurAnime {
 		
 		
 		/// TEST ///
-		AnimeDAO animeDAO = new AnimeDAO();
 		List<Anime> listeAnimeTest = animeDAO.listerAnime();
 ;		this.vueListeAnime.afficherListeAnime(listeAnimeTest); // Appel de ma fonction avant de la programmer (pour tester à mesure)
 				
@@ -52,10 +44,33 @@ public class ControleurAnime {
 		this.vueAnime.afficherAnime(anime); // Appel de ma fonction avant de la programmer (pour tester à mesure)
 		
 		//// TEST Navigation ////
-		this.navigateur.naviguerVersVueAnime();
 		this.navigateur.naviguerVersVueListeAnime();
-		this.navigateur.naviguerVersVueAjouterAnime();
+		
 				
+	}
+	
+	// SINGLETON DEBUT
+		private static ControleurAnime instance = null;
+		public static ControleurAnime getInstance()
+		{
+			if(null == instance) instance = new ControleurAnime();
+			return instance;
+		}
+	
+	//SINGLETON FINI
+	public void notifierEnregistrerMouton()
+	{
+		System.out.println("ControleurAnime.notifierEnregistrerAnime()");
+		Anime anime = this.navigateur.getVueAjouterAnime().demanderAnime();
+		this.animeDAO.ajouterAnime(anime);
+		this.vueListeAnime.afficherListeAnime(this.animeDAO.listerAnime()); // TODO optimiser
+		this.navigateur.naviguerVersVueListeAnime();
+	}
+	
+	public void notifierNaviguerAjouterAnime()
+	{
+		System.out.println("ControleurAnime.notifierNaviguerAjouterAnime()");
+		this.navigateur.naviguerVersVueAjouterAnime();
 	}
 
 }
