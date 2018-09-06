@@ -1,4 +1,5 @@
 package vue;
+import controleur.ControleurAnime;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -16,6 +17,7 @@ public class VueAjouterAnime extends Scene {
 	protected TextField valeurStudio;
 	protected TextField valeurNbEpisode;
 	protected TextField valeurDiffusion;
+	private ControleurAnime controleur = null;
 	
 	public VueAjouterAnime()  {
 		super(new VBox(), 400, 400);
@@ -52,6 +54,10 @@ public class VueAjouterAnime extends Scene {
 								this.valeurNbEpisode.getText(), 
 								this.valeurDiffusion.getText());
 		return anime;
+	}
+	
+	public void setControleur(ControleurAnime controleur) {
+		this.controleur = controleur;
 	}
 
 }

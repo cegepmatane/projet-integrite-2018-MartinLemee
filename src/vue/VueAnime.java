@@ -1,4 +1,5 @@
 package vue;
+import controleur.ControleurAnime;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -13,6 +14,7 @@ public class VueAnime extends Scene{
 	protected Label valeurStudio;
 	protected Label valeurNbEpisode;
 	protected Label valeurDiffusion;
+	private ControleurAnime controleur = null;
 	
 	public VueAnime() {
 		super(new Pane(),400,400);
@@ -45,6 +47,10 @@ public class VueAnime extends Scene{
 		this.valeurStudio.setText(anime.getStudio());
 		this.valeurNbEpisode.setText(anime.getNbEpisode());
 		this.valeurDiffusion.setText(anime.getDiffusion());	
+	}
+	
+	public void setControleur(ControleurAnime controleur) {
+		this.controleur  = controleur;
 	}
 
 }

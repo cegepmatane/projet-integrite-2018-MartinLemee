@@ -2,8 +2,10 @@ package vue;
 import java.util.ArrayList;
 import java.util.List;
 
+import controleur.ControleurAnime;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -13,6 +15,7 @@ import modele.Anime;
 public class VueListeAnime extends Scene {
 
 	protected GridPane grilleAnime;
+	private ControleurAnime controleur = null;
 	
 	public VueListeAnime() {
 		super(new Pane(), 400,400);
@@ -31,8 +34,13 @@ public class VueListeAnime extends Scene {
 		{
 			numero++;
 			this.grilleAnime.add(new Label(anime.getNom()), 0, numero);
-			this.grilleAnime.add(new Label(anime.getStudio()), 1, numero);			
+			this.grilleAnime.add(new Label(anime.getStudio()), 1, numero);	
+			this.grilleAnime.add(new Button("Editer"), 2, numero);
 		}
+	}
+	
+	public void setControleur(ControleurAnime controleur) {
+		this.controleur = controleur;
 	}
 
 }
