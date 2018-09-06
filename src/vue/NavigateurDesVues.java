@@ -1,11 +1,8 @@
 package vue;
-import java.util.ArrayList;
-import java.util.List;
 
 import controleur.ControleurAnime;
 import javafx.application.Application;
 import javafx.stage.Stage;
-import modele.Anime;
 
 public class NavigateurDesVues extends Application{
 	
