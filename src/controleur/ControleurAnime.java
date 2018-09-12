@@ -58,7 +58,7 @@ public class ControleurAnime {
 		}
 	
 	//SINGLETON FINI
-	public void notifierEnregistrerMouton()
+	public void notifierEnregistrerAnime()
 	{
 		System.out.println("ControleurAnime.notifierEnregistrerAnime()");
 		Anime anime = this.navigateur.getVueAjouterAnime().demanderAnime();

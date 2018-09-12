@@ -24,7 +24,7 @@ public class AnimeDAO {
 	}
 	
 	private static String BASEDEDONNEES_DRIVER = "org.postgresql.Driver";
-	private static String BASEDEDONNEES_URL = "jdbc:postgresql://localhost:5432/bergerie";
+	private static String BASEDEDONNEES_URL = "jdbc:postgresql://localhost:5432/AnimeList";
 	private static String BASEDEDONNEES_USAGER = "postgres";
 	private static String BASEDEDONNEES_MOTDEPASSE = "root";
 	
@@ -56,10 +56,10 @@ public class AnimeDAO {
 		Statement requeteListeAnime;
 		try {
 			requeteListeAnime = connection.createStatement();
-			ResultSet curseurListeAnime = requeteListeAnime.executeQuery("SELECT * FROM mouton");
+			ResultSet curseurListeAnime = requeteListeAnime.executeQuery("SELECT * FROM Anime");
 			while(curseurListeAnime.next())
 			{
-				String nom = curseurListeAnime.getString("nom");
+				String nom = curseurListeAnime.getString("nom"); 
 				String studio = curseurListeAnime.getString("studio");
 				String nbEpisode = curseurListeAnime.getString("nbEpisode");
 				String diffusion = curseurListeAnime.getString("diffusion");
