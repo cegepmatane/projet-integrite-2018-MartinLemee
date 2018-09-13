@@ -122,4 +122,19 @@ public class AnimeDAO {
 		
 	}
 	
+	public void modifierAnime(Anime anime) {
+		
+		System.out.println("AnimeDAO.modifierAnime()");
+		try {
+			Statement requeteModifierAnime = connection.createStatement();
+			
+			String SQL_MODIFIER_ANIME = "UPDATE anime SET nom = '"+anime.getNom()+"', studio = '"+anime.getStudio()+"', nbEpisode = '"+anime.getNbEpisode()+"', '"+anime.getDiffusion()+"' WHERE id = " + anime.getId();
+			System.out.println("SQL : " + SQL_MODIFIER_ANIME);
+			requeteModifierAnime.execute(SQL_MODIFIER_ANIME);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 }

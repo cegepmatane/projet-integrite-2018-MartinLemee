@@ -64,11 +64,20 @@ public class ControleurAnime {
 		}
 	
 	//SINGLETON FINI
-	public void notifierEnregistrerAnime()
+	public void notifierEnregistrerNouvelAnime()
 	{
-		System.out.println("ControleurAnime.notifierEnregistrerAnime()");
+		System.out.println("ControleurAnime.notifierEnregistrerNouvelAnime()");
 		Anime anime = this.navigateur.getVueAjouterAnime().demanderAnime();
 		this.animeDAO.ajouterAnime(anime);
+		this.vueListeAnime.afficherListeAnime(this.animeDAO.listerAnime()); // TODO optimiser
+		this.navigateur.naviguerVersVueListeAnime();
+	}
+	
+	public void notifierEnregistrerAnime() {
+		
+		System.out.println("ControleurAnime.notifierEnregistrerAnime()");
+		Anime anime = this.navigateur.getVueEditerAnime().demanderAnime();
+		this.animeDAO.modifierAnime(anime);
 		this.vueListeAnime.afficherListeAnime(this.animeDAO.listerAnime()); // TODO optimiser
 		this.navigateur.naviguerVersVueListeAnime();
 	}

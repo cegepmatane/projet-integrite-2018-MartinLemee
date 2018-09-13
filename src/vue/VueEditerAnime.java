@@ -21,6 +21,8 @@ public class VueEditerAnime extends Scene {
 	private ControleurAnime controleur = null;
 	protected Button actionEnregistrerAnime = null;
 	
+	private int idAnime = 0;
+	
 	public VueEditerAnime() {
 		super(new VBox(), 400, 400);
 		VBox panneau = (VBox) this.getRoot();
@@ -64,6 +66,7 @@ public class VueEditerAnime extends Scene {
 				this.valeurNbEpisode.getText(),
 				this.valeurDiffusion.getText());
 		
+		anime.setId(idAnime);
 		return anime;
 	}
 	
@@ -73,6 +76,7 @@ public class VueEditerAnime extends Scene {
 	
 	public void afficherAnime(Anime anime) {
 		
+		this.idAnime = anime.getId();
 		this.valeurNom.setText(anime.getNom());
 		this.valeurStudio.setText(anime.getStudio());
 		this.valeurNbEpisode.setText(anime.getNbEpisode());
