@@ -71,6 +71,14 @@ public class VueEditerAnime extends Scene {
 		this.controleur = controleur;
 	}
 	
+	public void afficherAnime(Anime anime) {
+		
+		this.valeurNom.setText(anime.getNom());
+		this.valeurStudio.setText(anime.getStudio());
+		this.valeurNbEpisode.setText(anime.getNbEpisode());
+		this.valeurDiffusion.setText(anime.getDiffusion());
+		
+	}
 	
 	
 

@@ -59,12 +59,14 @@ public class AnimeDAO {
 			ResultSet curseurListeAnime = requeteListeAnime.executeQuery("SELECT * FROM Anime");
 			while(curseurListeAnime.next())
 			{
+				int id = curseurListeAnime.getInt("id");
 				String nom = curseurListeAnime.getString("nom"); 
 				String studio = curseurListeAnime.getString("studio");
 				String nbEpisode = curseurListeAnime.getString("nbEpisode");
 				String diffusion = curseurListeAnime.getString("diffusion");
 				System.out.println("Anime " + nom + " fait par le studio " + studio + " : " + nbEpisode + " épisodes " + diffusion);
 				Anime anime = new Anime(nom, studio, nbEpisode, diffusion);
+				anime.setId(id);
 				listeAnime.add(anime);
 			}
 		} catch(SQLException e) {
@@ -92,6 +94,31 @@ public class AnimeDAO {
 			e.printStackTrace();
 		}
 		
+		
+	}
+	
+	public Anime rapporterAnime(int idAnime) {
+		Statement requeteAnime;
+		try {
+			requeteAnime = connection.createStatement();
+			
+			String SQL_RAPPORTER_ANIME = "SELECT * FROM anime WHERE id = " + idAnime;
+			System.out.println(SQL_RAPPORTER_ANIME);
+			ResultSet curseurAnime = requeteAnime.executeQuery(SQL_RAPPORTER_ANIME);
+			curseurAnime.next();
+			int id = curseurAnime.getInt("id");
+			String nom = curseurAnime.getString("nom");
+			String studio = curseurAnime.getString("studio");
+			String nbEpisode = curseurAnime.getString("nbEpisode");
+			String diffusion = curseurAnime.getString("diffusion");
+			System.out.println(nom + " fait par le studio " + studio + " avec " + nbEpisode + " épisodes, diffusé le " + diffusion);
+			Anime anime = new Anime(nom, studio, nbEpisode, diffusion);
+			anime.setId(id);
+			return anime;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
 		
 	}
 	

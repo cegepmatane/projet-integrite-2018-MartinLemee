@@ -29,22 +29,26 @@ public class VueListeAnime extends Scene {
 	
 	public void afficherListeAnime(List<Anime> listeAnime)
 	{
+		this.grilleAnime.getChildren().clear();
+		
 		int numero = 0;
 		this.grilleAnime.add(new Label("Nom"), 0, numero);
-		this.grilleAnime.add(new Label("Studio"), 1, numero);			
+		this.grilleAnime.add(new Label("Studio"), 1, numero);
+		
 		for(Anime anime : listeAnime)
 		{
 			Button actionEditerAnime = new Button("Editer");
 			actionEditerAnime.setOnAction(new EventHandler<ActionEvent>() {
+				
 				@Override
-				public void handle(ActionEvent arg0) {
-					controleur.notifierNaviguerEditerAnime();
+				public void handle(ActionEvent a) {
+					controleur.notifierNaviguerEditerAnime(anime.getId()); // à ameliorer
 				}
 			});
 			numero++;
 			this.grilleAnime.add(new Label(anime.getNom()), 0, numero);
 			this.grilleAnime.add(new Label(anime.getStudio()), 1, numero);	
-			this.grilleAnime.add(new Button("Editer"), 2, numero);
+			this.grilleAnime.add(actionEditerAnime, 2, numero);
 		} 
 		
 		this.actionNaviguerAjouterAnime.setOnAction(new EventHandler<ActionEvent>() {

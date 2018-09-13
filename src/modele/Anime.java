@@ -2,6 +2,7 @@ package modele;
 
 public class Anime {
 
+	protected int id;
 	protected String nom;
 	protected String studio;
 	protected String nbEpisode;
@@ -52,6 +53,12 @@ public class Anime {
 	}
 	public void setDiffusion(String diffusion) {
 		this.diffusion = diffusion;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 }

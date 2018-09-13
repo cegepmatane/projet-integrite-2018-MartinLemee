@@ -79,9 +79,10 @@ public class ControleurAnime {
 		this.navigateur.naviguerVersVueAjouterAnime();
 	}
 	
-	public void notifierNaviguerEditerAnime() {
+	public void notifierNaviguerEditerAnime(int idAnime) {
 		
-		System.out.println("ControleurAnime.notifierEditerAnime()");
+		System.out.println("ControleurAnime.notifierEditerAnime("+idAnime+")");
+		this.vueEditerAnime.afficherAnime(this.animeDAO.rapporterAnime(idAnime));
 		this.navigateur.naviguerVersVueEditerAnime();
 	}
 
