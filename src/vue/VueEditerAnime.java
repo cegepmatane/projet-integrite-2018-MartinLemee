@@ -50,7 +50,7 @@ public class VueEditerAnime extends Scene {
 		
 		valeurDiffusion = new TextField();
 		grilleAnime.add(new Label("Diffusion : "), 0, 3);
-		grilleAnime.add(valeurNom, 1, 3);
+		grilleAnime.add(valeurDiffusion, 1, 3);
 		
 		panneau.getChildren().add(new Label("Editer un anime"));
 		panneau.getChildren().add(grilleAnime);
@@ -70,6 +70,7 @@ public class VueEditerAnime extends Scene {
 	public void setControleur(ControleurAnime controleur) {
 		this.controleur = controleur;
 	}
+	
 	
 	
 

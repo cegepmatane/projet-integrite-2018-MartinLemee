@@ -6,29 +6,46 @@ import javafx.stage.Stage;
 
 public class NavigateurDesVues extends Application{
 	
-	private VueAjouterAnime vueAjouterAnime;
-	private VueListeAnime vueListeAnime;
-	private VueAnime vueAnime;
+	private Stage stade;
+	
+	private VueAjouterAnime vueAjouterAnime = null;
+	private VueListeAnime vueListeAnime = null;
+	private VueEditerAnime vueEditerAnime = null;
+	private VueAnime vueAnime = null;
+	
+	private ControleurAnime controleur = null;
+	
 	
 	public NavigateurDesVues() 
 	{
 		this.vueAjouterAnime = new VueAjouterAnime();
 		this.vueListeAnime = new VueListeAnime();
 		this.vueAnime = new VueAnime();	
+		this.vueEditerAnime = new VueEditerAnime();
+		
+		
 	}
 	
-	private Stage stade = null;
+	
 	
 	@Override
 	public void start(Stage stade) throws Exception {
 		
 		this.stade = stade;
 		
-		stade.setScene(this.vueListeAnime);
+		stade.setScene(null);
 		stade.show();
 		
-		ControleurAnime controleur = ControleurAnime.getInstance();
-		controleur.activerVues(this);
+		this.controleur = ControleurAnime.getInstance();
+		this.controleur.activerVues(this);
+		this.vueAjouterAnime.setControleur(controleur);
+		this.vueListeAnime.setControleur(controleur);
+		this.vueAnime.setControleur(controleur);
+		this.vueAjouterAnime.setControleur(controleur);
+		this.vueEditerAnime.setControleur(controleur);
+		
+		/*ControleurAnime controleur = ControleurAnime.getInstance();
+		controleur.activerVues(this);*/
 		
 	}
 	
@@ -56,6 +73,15 @@ public class NavigateurDesVues extends Application{
 
 	public void naviguerVersVueAnime() {
 		stade.setScene(this.vueAnime);
+		stade.show();
+	}
+	
+	public VueEditerAnime getVueEditerAnime() {
+		return vueEditerAnime;
+	}
+	
+	public void naviguerVersVueEditerAnime() {
+		stade.setScene(this.vueEditerAnime);
 		stade.show();
 	}
 	
