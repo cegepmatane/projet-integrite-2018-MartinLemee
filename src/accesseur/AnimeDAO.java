@@ -128,7 +128,7 @@ public class AnimeDAO {
 		try {
 			Statement requeteModifierAnime = connection.createStatement();
 			
-			String SQL_MODIFIER_ANIME = "UPDATE anime SET nom = '"+anime.getNom()+"', studio = '"+anime.getStudio()+"', nbEpisode = '"+anime.getNbEpisode()+"', '"+anime.getDiffusion()+"' WHERE id = " + anime.getId();
+			String SQL_MODIFIER_ANIME = "UPDATE anime SET nom = '"+anime.getNom()+"', studio = '"+anime.getStudio()+"', nbEpisode = '"+anime.getNbEpisode()+"', diffusion = '"+anime.getDiffusion()+"' WHERE id = " + anime.getId();
 			System.out.println("SQL : " + SQL_MODIFIER_ANIME);
 			requeteModifierAnime.execute(SQL_MODIFIER_ANIME);
 			
