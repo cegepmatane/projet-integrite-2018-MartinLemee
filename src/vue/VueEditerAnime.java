@@ -59,19 +59,7 @@ public class VueEditerAnime extends Scene {
 		valeurDiffusion = new TextField();
 		grilleAnime.add(new Label("Diffusion : "), 0, 3);
 		grilleAnime.add(valeurDiffusion, 1, 3);
-		
-		// Données de test
-		
-		List<Studio> listeStudio = new ArrayList<Studio>();
-		Studio nom_studio;
-		
-		nom_studio = new Studio("Kinema Citrus", "Sentai Filmworks");
-		listeStudio.add(nom_studio);
-		
-		this.afficherListeStudio(listeStudio);
-		
-		
-		
+			
 		panneau.getChildren().add(new Label("Editer un anime"));
 		panneau.getChildren().add(grilleAnime);
 		panneau.getChildren().add(this.actionEnregistrerAnime);
