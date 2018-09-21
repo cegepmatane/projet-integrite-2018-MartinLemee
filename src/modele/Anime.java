@@ -4,7 +4,7 @@ public class Anime {
 
 	protected int id;
 	protected String nom;
-	protected String studio;
+	//protected String studio;
 	protected String nbEpisode;
 	protected String diffusion;
 	
@@ -12,21 +12,19 @@ public class Anime {
 		super();
 		this.nom = nom;
 	}
-	public Anime(String nom, String studio) {
+	/*public Anime(String nom, String studio) {
 		super();
 		this.nom = nom;
 		this.studio = studio;
-	}
-	public Anime(String nom, String studio, String nbEpisode) {
+	}*/
+	public Anime(String nom, String nbEpisode) {
 		super();
 		this.nom = nom;
-		this.studio = studio;
 		this.nbEpisode = nbEpisode;
 	}
-	public Anime(String nom, String studio, String nbEpisode, String diffusion) {
+	public Anime(String nom, String nbEpisode, String diffusion) {
 		super();
 		this.nom = nom;
-		this.studio = studio;
 		this.nbEpisode = nbEpisode;
 		this.diffusion = diffusion;
 	}
@@ -36,12 +34,7 @@ public class Anime {
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
-	public String getStudio() {
-		return studio;
-	}
-	public void setStudio(String studio) {
-		this.studio = studio;
-	}
+
 	public String getNbEpisode() {
 		return nbEpisode;
 	}

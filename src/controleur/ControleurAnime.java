@@ -40,7 +40,7 @@ public class ControleurAnime {
 		
 				
 		//// TEST ////
-		Anime anime = new Anime("Made in Abyss", "Kinema Citrus", "13", "Ete 2017");
+		Anime anime = new Anime("Made in Abyss", "13", "Ete 2017");
 		this.vueAnime.afficherAnime(anime); // Appel de ma fonction avant de la programmer (pour tester à mesure)
 		
 		//// TEST Navigation ////

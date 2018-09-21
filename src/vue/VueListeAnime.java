@@ -33,7 +33,7 @@ public class VueListeAnime extends Scene {
 		
 		int numero = 0;
 		this.grilleAnime.add(new Label("Nom"), 0, numero);
-		this.grilleAnime.add(new Label("Studio"), 1, numero);
+		this.grilleAnime.add(new Label("Nombre d'épisodes"), 1, numero);
 		
 		for(Anime anime : listeAnime)
 		{
@@ -47,7 +47,7 @@ public class VueListeAnime extends Scene {
 			});
 			numero++;
 			this.grilleAnime.add(new Label(anime.getNom()), 0, numero);
-			this.grilleAnime.add(new Label(anime.getStudio()), 1, numero);	
+			this.grilleAnime.add(new Label(anime.getNbEpisode()), 1, numero);	
 			this.grilleAnime.add(actionEditerAnime, 2, numero);
 		} 
 		

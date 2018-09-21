@@ -11,7 +11,7 @@ import modele.Anime;
 public class VueAnime extends Scene{
 
 	protected Label valeurNom;
-	protected Label valeurStudio;
+	//protected Label valeurStudio;
 	protected Label valeurNbEpisode;
 	protected Label valeurDiffusion;
 	private ControleurAnime controleur = null;
@@ -26,17 +26,17 @@ public class VueAnime extends Scene{
 		grilleAnime.add(new Label("Nom : "), 0, 0);
 		grilleAnime.add(valeurNom, 1, 0);
 		
-		valeurStudio = new Label("");
+		/*valeurStudio = new Label("");
 		grilleAnime.add(new Label("Studio : "), 0, 1);
-		grilleAnime.add(valeurStudio, 1, 1);
+		grilleAnime.add(valeurStudio, 1, 1);*/
 
 		valeurNbEpisode = new Label("");
-		grilleAnime.add(new Label("Nombres d'épisodes : "), 0, 2);
-		grilleAnime.add(valeurNbEpisode, 1, 2);		
+		grilleAnime.add(new Label("Nombres d'épisodes : "), 0, 1);
+		grilleAnime.add(valeurNbEpisode, 1, 1);		
 
 		valeurDiffusion = new Label("");
-		grilleAnime.add(new Label("Diffusion : "), 0, 3);
-		grilleAnime.add(valeurDiffusion, 1, 3);				
+		grilleAnime.add(new Label("Diffusion : "), 0, 2);
+		grilleAnime.add(valeurDiffusion, 1, 2);				
 			
 		panneau.getChildren().add(grilleAnime);		
 	}
@@ -44,7 +44,7 @@ public class VueAnime extends Scene{
 	public void afficherAnime(Anime anime)
 	{
 		this.valeurNom.setText(anime.getNom());
-		this.valeurStudio.setText(anime.getStudio());
+		//this.valeurStudio.setText(anime.getStudio());
 		this.valeurNbEpisode.setText(anime.getNbEpisode());
 		this.valeurDiffusion.setText(anime.getDiffusion());	
 	}

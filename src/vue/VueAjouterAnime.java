@@ -16,7 +16,7 @@ import modele.Anime;
 public class VueAjouterAnime extends Scene {
 
 	protected TextField valeurNom;
-	protected TextField valeurStudio;
+	//protected TextField valeurStudio;
 	protected TextField valeurNbEpisode;
 	protected TextField valeurDiffusion;
 	
@@ -45,9 +45,9 @@ public class VueAjouterAnime extends Scene {
 		grilleAnime.add(new Label("Nom : "), 0, 0);
 		grilleAnime.add(valeurNom, 1, 0);
 		
-		valeurStudio = new TextField("");
+		/*valeurStudio = new TextField("");
 		grilleAnime.add(new Label("Studio : "), 0, 1);
-		grilleAnime.add(valeurStudio, 1, 1);
+		grilleAnime.add(valeurStudio, 1, 1);*/
 
 		valeurNbEpisode = new TextField("");
 		grilleAnime.add(new Label("Nombres d'épisodes : "), 0, 2);
@@ -66,7 +66,6 @@ public class VueAjouterAnime extends Scene {
 	public Anime demanderAnime()
 	{
 		Anime anime = new Anime(this.valeurNom.getText(), 
-								this.valeurStudio.getText(), 
 								this.valeurNbEpisode.getText(), 
 								this.valeurDiffusion.getText());
 		return anime;

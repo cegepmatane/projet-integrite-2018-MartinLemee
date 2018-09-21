@@ -1,5 +1,8 @@
 package vue;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import controleur.ControleurAnime;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -10,6 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import modele.Anime;
+import modele.Studio;
 
 public class VueEditerAnime extends Scene {
 
@@ -20,6 +24,8 @@ public class VueEditerAnime extends Scene {
 	
 	private ControleurAnime controleur = null;
 	protected Button actionEnregistrerAnime = null;
+	
+	GridPane grilleListeStudio = new GridPane();
 	
 	private int idAnime = 0;
 	
@@ -42,9 +48,9 @@ public class VueEditerAnime extends Scene {
 		grilleAnime.add(new Label("Nom : "), 0, 0);
 		grilleAnime.add(valeurNom, 1, 0);
 		
-		valeurStudio = new TextField();
+		/*valeurStudio = new TextField();
 		grilleAnime.add(new Label("Studio : "), 0, 1);
-		grilleAnime.add(valeurStudio, 1, 1);
+		grilleAnime.add(valeurStudio, 1, 1);*/
 		
 		valeurNbEpisode = new TextField();
 		grilleAnime.add(new Label("Nombre d'épisodes : "), 0, 2);
@@ -54,15 +60,34 @@ public class VueEditerAnime extends Scene {
 		grilleAnime.add(new Label("Diffusion : "), 0, 3);
 		grilleAnime.add(valeurDiffusion, 1, 3);
 		
+		// Données de test
+		
+		List<Studio> listeStudio = new ArrayList<Studio>();
+		Studio nom_studio;
+		
+		nom_studio = new Studio("Kinema Citrus", "Sentai Filmworks");
+		listeStudio.add(nom_studio);
+		
+		int item = 0;
+		
+		for(Studio studio : listeStudio)
+		{
+			this.grilleListeStudio.add(new Label(studio.getStudio() + "   "), 0, item);
+			this.grilleListeStudio.add(new Label(studio.getProducteurs() + " "), 1, item);
+			this.grilleListeStudio.add(new Button("Éditer"), 2, item);
+			this.grilleListeStudio.add(new Button("Effacer"), 3, item);
+			item++;
+		}
+		
 		panneau.getChildren().add(new Label("Editer un anime"));
 		panneau.getChildren().add(grilleAnime);
 		panneau.getChildren().add(this.actionEnregistrerAnime);
+		panneau.getChildren().add(grilleListeStudio);
 	}
 	
 	public Anime demanderAnime() {
 		
 		Anime anime = new Anime(this.valeurNom.getText(),
-				this.valeurStudio.getText(),
 				this.valeurNbEpisode.getText(),
 				this.valeurDiffusion.getText());
 		
@@ -78,7 +103,7 @@ public class VueEditerAnime extends Scene {
 		
 		this.idAnime = anime.getId();
 		this.valeurNom.setText(anime.getNom());
-		this.valeurStudio.setText(anime.getStudio());
+		//this.valeurStudio.setText(anime.getStudio());
 		this.valeurNbEpisode.setText(anime.getNbEpisode());
 		this.valeurDiffusion.setText(anime.getDiffusion());
 		
