@@ -68,16 +68,9 @@ public class VueEditerAnime extends Scene {
 		nom_studio = new Studio("Kinema Citrus", "Sentai Filmworks");
 		listeStudio.add(nom_studio);
 		
-		int item = 0;
+		this.afficherListeStudio(listeStudio);
 		
-		for(Studio studio : listeStudio)
-		{
-			this.grilleListeStudio.add(new Label(studio.getStudio() + "   "), 0, item);
-			this.grilleListeStudio.add(new Label(studio.getProducteurs() + " "), 1, item);
-			this.grilleListeStudio.add(new Button("Éditer"), 2, item);
-			this.grilleListeStudio.add(new Button("Effacer"), 3, item);
-			item++;
-		}
+		
 		
 		panneau.getChildren().add(new Label("Editer un anime"));
 		panneau.getChildren().add(grilleAnime);
@@ -107,6 +100,19 @@ public class VueEditerAnime extends Scene {
 		this.valeurNbEpisode.setText(anime.getNbEpisode());
 		this.valeurDiffusion.setText(anime.getDiffusion());
 		
+	}
+	
+	public void afficherListeStudio(List<Studio> listeStudio) {
+		int item = 0;
+		
+		for(Studio studio : listeStudio)
+		{
+			this.grilleListeStudio.add(new Label(studio.getStudio() + "   "), 0, item);
+			this.grilleListeStudio.add(new Label(studio.getProducteurs() + " "), 1, item);
+			this.grilleListeStudio.add(new Button("Éditer"), 2, item);
+			this.grilleListeStudio.add(new Button("Effacer"), 3, item);
+			item++;
+		}
 	}
 	
 	
