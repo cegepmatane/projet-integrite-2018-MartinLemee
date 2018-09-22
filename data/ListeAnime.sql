@@ -92,8 +92,7 @@ CREATE TABLE public.anime (
     id integer NOT NULL,
     nom text,
     nbepisode text,
-    diffusion text,
-    id_studio integer NOT NULL
+    diffusion text
 );
 
 
@@ -122,45 +121,24 @@ ALTER SEQUENCE public.anime_id_seq OWNED BY public.anime.id;
 
 
 --
--- Name: anime_id_studio_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE public.anime_id_studio_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.anime_id_studio_seq OWNER TO postgres;
-
---
--- Name: anime_id_studio_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
---
-
-ALTER SEQUENCE public.anime_id_studio_seq OWNED BY public.anime.id_studio;
-
-
---
 -- Name: studio; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.studio (
-    id_studio integer NOT NULL,
     nom_studio text,
-    producteurs text
+    producteurs text,
+    id_anime integer,
+    id integer NOT NULL
 );
 
 
 ALTER TABLE public.studio OWNER TO postgres;
 
 --
--- Name: studio_id_studio_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: studio_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE public.studio_id_studio_seq
+CREATE SEQUENCE public.studio_id_seq
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -169,13 +147,13 @@ CREATE SEQUENCE public.studio_id_studio_seq
     CACHE 1;
 
 
-ALTER TABLE public.studio_id_studio_seq OWNER TO postgres;
+ALTER TABLE public.studio_id_seq OWNER TO postgres;
 
 --
--- Name: studio_id_studio_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: studio_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
-ALTER SEQUENCE public.studio_id_studio_seq OWNED BY public.studio.id_studio;
+ALTER SEQUENCE public.studio_id_seq OWNED BY public.studio.id;
 
 
 --
@@ -186,30 +164,24 @@ ALTER TABLE ONLY public.anime ALTER COLUMN id SET DEFAULT nextval('public.anime_
 
 
 --
--- Name: anime id_studio; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: studio id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.anime ALTER COLUMN id_studio SET DEFAULT nextval('public.anime_id_studio_seq'::regclass);
-
-
---
--- Name: studio id_studio; Type: DEFAULT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.studio ALTER COLUMN id_studio SET DEFAULT nextval('public.studio_id_studio_seq'::regclass);
+ALTER TABLE ONLY public.studio ALTER COLUMN id SET DEFAULT nextval('public.studio_id_seq'::regclass);
 
 
 --
 -- Data for Name: anime; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.anime VALUES (1, 'Made in Abyss', '13', 'Ete 2017', 1);
+INSERT INTO public.anime VALUES (1, 'Made in Abyss', '13', 'Ete 2017');
 
 
 --
 -- Data for Name: studio; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+INSERT INTO public.studio VALUES ('Kinema Citrus', 'Sentai Filmworks', 1, 1);
 
 
 --
@@ -220,17 +192,10 @@ SELECT pg_catalog.setval('public.anime_id_seq', 1, true);
 
 
 --
--- Name: anime_id_studio_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: studio_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.anime_id_studio_seq', 1, true);
-
-
---
--- Name: studio_id_studio_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.studio_id_studio_seq', 1, false);
+SELECT pg_catalog.setval('public.studio_id_seq', 1, true);
 
 
 --
