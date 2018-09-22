@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import accesseur.AnimeDAO;
+import accesseur.StudioDAO;
 import modele.Anime;
 import modele.Studio;
 import vue.NavigateurDesVues;
@@ -23,11 +24,13 @@ public class ControleurAnime {
 	
 	private NavigateurDesVues navigateur;
 	AnimeDAO animeDAO = null;
+	StudioDAO studioDAO = null;
 	
 	public ControleurAnime() 
 	{
 		System.out.println("Initialisation du controleur");	
 		this.animeDAO = new AnimeDAO();
+		this.studioDAO = new StudioDAO();
 	}
 	
 	public void activerVues(NavigateurDesVues navigateur)
@@ -53,13 +56,11 @@ public class ControleurAnime {
 		this.vueListeAnime.afficherListeAnime(listeAnimeTest); // Appel de ma fonction avant de la programmer (pour tester à mesure)
 		
 		/// TEST studio ///
-		List<Studio> listeStudio = new ArrayList<Studio>();
-		Studio nom_studio;
-		nom_studio = new Studio("Kinema Citrus", "Sentai Filmworks");
-		listeStudio.add(nom_studio);
-		this.vueEditerAnime.afficherListeStudio(listeStudio);
-				
+		
 		this.navigateur.naviguerVersVueListeAnime();
+		
+		this.vueEditerAnime.afficherListeStudio(this.studioDAO.simulerListeStudio());
+		
 		
 				
 	}
