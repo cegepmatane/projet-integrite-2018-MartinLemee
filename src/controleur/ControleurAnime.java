@@ -59,7 +59,7 @@ public class ControleurAnime {
 		
 		this.navigateur.naviguerVersVueListeAnime();
 		
-		this.vueEditerAnime.afficherListeStudio(this.studioDAO.simulerListeStudio());
+		this.vueEditerAnime.afficherListeStudio(this.studioDAO.listerStudio());
 		
 		
 				

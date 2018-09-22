@@ -149,7 +149,8 @@ ALTER SEQUENCE public.anime_id_studio_seq OWNED BY public.anime.id_studio;
 
 CREATE TABLE public.studio (
     id_studio integer NOT NULL,
-    nom_studio text
+    nom_studio text,
+    producteurs text
 );
 
 
