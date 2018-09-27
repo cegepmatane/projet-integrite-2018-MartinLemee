@@ -25,7 +25,8 @@ public class VueEditerAnime extends Scene {
 	private ControleurAnime controleur = null;
 	protected Button actionEnregistrerAnime = null;
 	
-	GridPane grilleListeStudio = new GridPane();
+	protected GridPane grilleListeStudio = new GridPane();
+	protected Button actionAjouterStudio = null;
 	
 	private int idAnime = 0;
 	
@@ -33,6 +34,19 @@ public class VueEditerAnime extends Scene {
 		super(new VBox(), 400, 400);
 		VBox panneau = (VBox) this.getRoot();
 		GridPane grilleAnime = new GridPane();
+		
+		this.actionAjouterStudio = new Button("Ajouter un studio");
+		
+		this.actionAjouterStudio.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		
 		this.actionEnregistrerAnime = new Button("Enregistrer");
 		
 		this.actionEnregistrerAnime.setOnAction(new EventHandler<ActionEvent>() {
@@ -65,6 +79,7 @@ public class VueEditerAnime extends Scene {
 		panneau.getChildren().add(grilleAnime);
 		panneau.getChildren().add(this.actionEnregistrerAnime);
 		panneau.getChildren().add(grilleListeStudio);
+		panneau.getChildren().add(this.actionAjouterStudio);
 	}
 	
 	public Anime demanderAnime() {

@@ -23,8 +23,8 @@ public class ControleurAnime {
 	private VueEditerAnime vueEditerAnime = null;
 	
 	private NavigateurDesVues navigateur;
-	AnimeDAO animeDAO = null;
-	StudioDAO studioDAO = null;
+	private AnimeDAO animeDAO = null;
+	private StudioDAO studioDAO = null;
 	
 	public ControleurAnime() 
 	{
@@ -59,7 +59,7 @@ public class ControleurAnime {
 		
 		this.navigateur.naviguerVersVueListeAnime();
 		
-		this.vueEditerAnime.afficherListeStudio(this.studioDAO.listerStudio());
+		//this.vueEditerAnime.afficherListeStudio(this.studioDAO.listerStudio(id_anime));
 		
 		
 				
