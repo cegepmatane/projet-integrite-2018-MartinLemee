@@ -8,9 +8,17 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import donnee.BaseDeDonnee;
 import modele.Anime;
 
 public class AnimeDAO {
+	
+	private Connection connection = null;
+	
+	public AnimeDAO()
+	{
+		this.connection = BaseDeDonnee.getInstance().getConnection();	
+	}
 
 	public List<Anime> simulerListerAnime()
 	{
@@ -20,31 +28,6 @@ public class AnimeDAO {
 		listeAnimeTest.add(new Anime("Your Name", "1", "Ete 2016"));
 		listeAnimeTest.add(new Anime("Hyouka", "22", "Printemps 2012"));
 		return listeAnimeTest;
-		
-	}
-	
-	private static String BASEDEDONNEES_DRIVER = "org.postgresql.Driver";
-	private static String BASEDEDONNEES_URL = "jdbc:postgresql://localhost:5432/AnimeList";
-	private static String BASEDEDONNEES_USAGER = "postgres";
-	private static String BASEDEDONNEES_MOTDEPASSE = "root";
-	
-	private Connection connection = null;
-	
-	public AnimeDAO() 
-	{
-
-		try {
-			Class.forName(BASEDEDONNEES_DRIVER);
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-		
-		try {
-			connection = DriverManager.getConnection(BASEDEDONNEES_URL, BASEDEDONNEES_USAGER, BASEDEDONNEES_MOTDEPASSE);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		
 	}
 		
