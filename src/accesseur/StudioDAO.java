@@ -2,6 +2,7 @@ package accesseur;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -24,12 +25,15 @@ public class StudioDAO {
 	{
 		System.out.println("StudioDAO.listerStudio()");
 		List<Studio> listeStudio =  new ArrayList<Studio>();			
-		Statement requeteListeStudio;
+		PreparedStatement requeteListeStudio;
+		String SQL_LISTER_STUDIO_PAR_ANIME = "SELECT * FROM studio WHERE anime = ?";
+		
 		try {
-			requeteListeStudio = connection.createStatement();
-
 			
-			ResultSet curseurListeStudio = requeteListeStudio.executeQuery("SELECT * FROM Studio WHERE id_anime = " + id_anime);
+			requeteListeStudio = connection.prepareStatement(SQL_LISTER_STUDIO_PAR_ANIME);
+			requeteListeStudio.setInt(1, id_anime);
+			ResultSet curseurListeStudio = requeteListeStudio.executeQuery(); 
+
 			while(curseurListeStudio.next())
 			{
 				int id = curseurListeStudio.getInt("id");
