@@ -1,4 +1,4 @@
-package accesseur;
+package donnee;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -9,10 +9,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import donnee.BaseDeDonnee;
 import modele.Anime;
 
-public class AnimeDAO {
+public class AnimeDAO implements AnimeSQL {
 	
 	private Connection connection = null;
 	
@@ -40,7 +39,7 @@ public class AnimeDAO {
 		Statement requeteListeAnime;
 		try {
 			requeteListeAnime = connection.createStatement();
-			ResultSet curseurListeAnime = requeteListeAnime.executeQuery("SELECT * FROM Anime");
+			ResultSet curseurListeAnime = requeteListeAnime.executeQuery(SQL_LISTER_ANIME);
 			while(curseurListeAnime.next())
 			{
 				int id = curseurListeAnime.getInt("id");
@@ -68,7 +67,7 @@ public class AnimeDAO {
 		
 		try {
 			
-			String SQL_AJOUTER_ANIME = "INSERT into Anime(nom, nbEpisode, diffusion) VALUES(?,?,?)";
+			
 			PreparedStatement requeteAjouterAnime = connection.prepareStatement(SQL_AJOUTER_ANIME);
 			requeteAjouterAnime.setString(1, anime.getNom());
 			requeteAjouterAnime.setString(2, anime.getNbEpisode());
@@ -118,7 +117,7 @@ public class AnimeDAO {
 		System.out.println("AnimeDAO.modifierAnime()");
 		try {
 	
-			String SQL_MODIFIER_ANIME = "UPDATE anime SET nom = ? , nbEpisode = ?, diffusion = ? WHERE id = ?";
+			
 			PreparedStatement requeteModifierAnime = connection.prepareStatement(SQL_MODIFIER_ANIME);
 			requeteModifierAnime.setString(1, anime.getNom());
 			requeteModifierAnime.setString(2, anime.getNbEpisode());

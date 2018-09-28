@@ -1,4 +1,4 @@
-package accesseur;
+package donnee;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -9,10 +9,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import donnee.BaseDeDonnee;
 import modele.Studio;
 
-public class StudioDAO {
+public class StudioDAO implements StudioSQL {
 	
 	private Connection connection = null;
 	
@@ -26,7 +25,7 @@ public class StudioDAO {
 		System.out.println("StudioDAO.listerStudio()");
 		List<Studio> listeStudio =  new ArrayList<Studio>();			
 		PreparedStatement requeteListeStudio;
-		String SQL_LISTER_STUDIO_PAR_ANIME = "SELECT * FROM studio WHERE anime = ?";
+		
 		
 		try {
 			

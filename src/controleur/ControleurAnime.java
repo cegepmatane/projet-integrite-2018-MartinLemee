@@ -4,8 +4,8 @@ package controleur;
 import java.util.ArrayList;
 import java.util.List;
 
-import accesseur.AnimeDAO;
-import accesseur.StudioDAO;
+import donnee.AnimeDAO;
+import donnee.StudioDAO;
 import modele.Anime;
 import modele.Studio;
 import vue.NavigateurDesVues;
