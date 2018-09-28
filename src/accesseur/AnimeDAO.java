@@ -67,11 +67,19 @@ public class AnimeDAO {
 		
 		
 		try {
-			Statement requeteAjouterAnime = connection.createStatement();
-			String sqlAjouterAnime = "INSERT into Anime(nom, studio, nbEpisode, diffusion) VALUES('"+anime.getNom()+"','"+anime.getNbEpisode()+"','"+anime.getDiffusion()+"')";
-			System.out.println("SQL : " + sqlAjouterAnime);
-			requeteAjouterAnime.execute(sqlAjouterAnime);
+			//Statement requeteAjouterAnime = connection.createStatement();
+			//String sqlAjouterAnime = "INSERT into Anime(nom, studio, nbEpisode, diffusion) VALUES('"+anime.getNom()+"','"+anime.getNbEpisode()+"','"+anime.getDiffusion()+"')";
+			//System.out.println("SQL : " + sqlAjouterAnime);
+			//requeteAjouterAnime.execute(sqlAjouterAnime);
 			
+			String SQL_AJOUTER_ANIME = "INSERT into Anime(nom, nbEpisode, diffusion) VALUES(?,?,?)";
+			PreparedStatement requeteAjouterAnime = connection.prepareStatement(SQL_AJOUTER_ANIME);
+			requeteAjouterAnime.setString(1, anime.getNom());
+			requeteAjouterAnime.setString(2, anime.getNbEpisode());
+			requeteAjouterAnime.setString(3, anime.getDiffusion());
+			
+			System.out.println("SQL : " + SQL_AJOUTER_ANIME);
+			requeteAjouterAnime.execute();
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -86,7 +94,7 @@ public class AnimeDAO {
 		PreparedStatement requeteAnime;
 		try {
 			//requeteAnime = connection.createStatement();
-			String SQL_RAPPORTER_ANIME = "SELECT * FROM anime WHERE id = ";
+			String SQL_RAPPORTER_ANIME = "SELECT * FROM anime WHERE id = ?";
 			requeteAnime = connection.prepareStatement(SQL_RAPPORTER_ANIME);
 			requeteAnime.setInt(1, idAnime);
 			
