@@ -67,10 +67,6 @@ public class AnimeDAO {
 		
 		
 		try {
-			//Statement requeteAjouterAnime = connection.createStatement();
-			//String sqlAjouterAnime = "INSERT into Anime(nom, studio, nbEpisode, diffusion) VALUES('"+anime.getNom()+"','"+anime.getNbEpisode()+"','"+anime.getDiffusion()+"')";
-			//System.out.println("SQL : " + sqlAjouterAnime);
-			//requeteAjouterAnime.execute(sqlAjouterAnime);
 			
 			String SQL_AJOUTER_ANIME = "INSERT into Anime(nom, nbEpisode, diffusion) VALUES(?,?,?)";
 			PreparedStatement requeteAjouterAnime = connection.prepareStatement(SQL_AJOUTER_ANIME);
@@ -121,11 +117,15 @@ public class AnimeDAO {
 		
 		System.out.println("AnimeDAO.modifierAnime()");
 		try {
-			Statement requeteModifierAnime = connection.createStatement();
-			
-			String SQL_MODIFIER_ANIME = "UPDATE anime SET nom = '"+anime.getNom()+"', nbEpisode = '"+anime.getNbEpisode()+"', diffusion = '"+anime.getDiffusion()+"' WHERE id = " + anime.getId();
+	
+			String SQL_MODIFIER_ANIME = "UPDATE anime SET nom = ? , nbEpisode = ?, diffusion = ? WHERE id = ?";
+			PreparedStatement requeteModifierAnime = connection.prepareStatement(SQL_MODIFIER_ANIME);
+			requeteModifierAnime.setString(1, anime.getNom());
+			requeteModifierAnime.setString(2, anime.getNbEpisode());
+			requeteModifierAnime.setString(3, anime.getDiffusion());
+			requeteModifierAnime.setInt(4, anime.getId());
 			System.out.println("SQL : " + SQL_MODIFIER_ANIME);
-			requeteModifierAnime.execute(SQL_MODIFIER_ANIME);
+			requeteModifierAnime.execute();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
