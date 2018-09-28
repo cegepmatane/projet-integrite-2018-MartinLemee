@@ -2,6 +2,7 @@ package accesseur;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -81,13 +82,16 @@ public class AnimeDAO {
 	}
 	
 	public Anime rapporterAnime(int idAnime) {
-		Statement requeteAnime;
+		//Statement requeteAnime;
+		PreparedStatement requeteAnime;
 		try {
-			requeteAnime = connection.createStatement();
+			//requeteAnime = connection.createStatement();
+			String SQL_RAPPORTER_ANIME = "SELECT * FROM anime WHERE id = ";
+			requeteAnime = connection.prepareStatement(SQL_RAPPORTER_ANIME);
+			requeteAnime.setInt(1, idAnime);
 			
-			String SQL_RAPPORTER_ANIME = "SELECT * FROM anime WHERE id = " + idAnime;
 			System.out.println(SQL_RAPPORTER_ANIME);
-			ResultSet curseurAnime = requeteAnime.executeQuery(SQL_RAPPORTER_ANIME);
+			ResultSet curseurAnime = requeteAnime.executeQuery();
 			curseurAnime.next();
 			int id = curseurAnime.getInt("id");
 			String nom = curseurAnime.getString("nom");

@@ -199,6 +199,37 @@ SELECT pg_catalog.setval('public.studio_id_seq', 1, true);
 
 
 --
+-- Name: anime id_anime; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.anime
+    ADD CONSTRAINT id_anime PRIMARY KEY (id);
+
+
+--
+-- Name: studio id_studio; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.studio
+    ADD CONSTRAINT id_studio PRIMARY KEY (id);
+
+
+--
+-- Name: fki_StudioToAnime; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX "fki_StudioToAnime" ON public.studio USING btree (id_anime);
+
+
+--
+-- Name: studio StudioToAnime; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.studio
+    ADD CONSTRAINT "StudioToAnime" FOREIGN KEY (id_anime) REFERENCES public.anime(id);
+
+
+--
 -- PostgreSQL database dump complete
 --
 
